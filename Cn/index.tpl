@@ -19,26 +19,13 @@
                     <img src="Images/docNavLogo.png" alt="EASYSWOOLE">
                 </a>
             </div>
-            <div id="navbar" class="navbar-menu">
-                <div class="navbar-end">
-                    <a class="navbar-item changeLang" href="javascript:void(0)">language</a>
-                    <ul class="nav-dropdown" style="display: none;">
-                        <li class="dropdown-item">
-                            <a href="/Cn.html" class="nav-link">简体中文</a>
-                        </li>
-                        <li class="dropdown-item">
-                            <a href="/En.html" class="nav-link">ENGLISH</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
     </nav>
     <section class="hero has-text-centered">
         <div class="hero-body" style="padding-bottom: 0; padding-top: 1.5rem">
             <div class="container">
                 <h3 class="hero-headline animated fadeInUp">一种愉悦的开发方式</h3>
-                <div class="hero-btn"><a class="btn-blue" id="start" href="/hello">开始使用</a></div>
+                <div class="hero-btn"><a class="btn-blue" id="start" href="/Preface/intro.html">开始使用</a></div>
             </div>
             <embed class="image esanimation" src="/Images/index.svg" type="image/svg+xml" pluginspage="img/easy.svg"/>
         </div>

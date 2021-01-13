@@ -4,6 +4,8 @@ namespace EasySwoole\EasySwoole;
 
 use App\Model\Document\Doc;
 use App\Utility\DocContainer;
+use App\Utility\TickProcess;
+use EasySwoole\Component\Process\Manager;
 use EasySwoole\EasySwoole\Swoole\EventRegister;
 use EasySwoole\EasySwoole\AbstractInterface\Event;
 use EasySwoole\Http\Request;
@@ -21,23 +23,29 @@ class EasySwooleEvent implements Event
     public static function mainServerCreate(EventRegister $register)
     {
         $cn = new Doc(EASYSWOOLE_ROOT.'/Cn');
-        $cn->setName('cn');
+        $cn->setName('ES_DOC_CN');
         $cn->getTemplate()->setHomePageTpl('index.tpl');
         $cn->getTemplate()->setSideBarMd('sideBar.md');
         $cn->getTemplate()->setContentPageTpl('contentPage.tpl');
         $cn->getTemplate()->setPageNotFoundTpl('404.tpl');
         DocContainer::getInstance()->add($cn);
 
-    }
+        $swooleDoc = new Doc(EASYSWOOLE_ROOT.'/SwooleDoc');
+        $swooleDoc->setName('SWOOLE_DOC');
+        $swooleDoc->getTemplate()->setHomePageTpl('index.tpl');
+        $swooleDoc->getTemplate()->setSideBarMd('sideBar.md');
+        $swooleDoc->getTemplate()->setContentPageTpl('contentPage.tpl');
+        $swooleDoc->getTemplate()->setPageNotFoundTpl('404.tpl');
+        DocContainer::getInstance()->add($swooleDoc);
 
-    public static function onRequest(Request $request, Response $response): bool
-    {
-        // TODO: Implement onRequest() method.
-        return true;
-    }
+        $en = new Doc(EASYSWOOLE_ROOT.'/En');
+        $en->setName('ES_DOC_EN');
+        $en->getTemplate()->setHomePageTpl('index.tpl');
+        $en->getTemplate()->setSideBarMd('sideBar.md');
+        $en->getTemplate()->setContentPageTpl('contentPage.tpl');
+        $en->getTemplate()->setPageNotFoundTpl('404.tpl');
+        DocContainer::getInstance()->add($en);
 
-    public static function afterRequest(Request $request, Response $response): void
-    {
-        // TODO: Implement afterAction() method.
+        Manager::getInstance()->addProcess(new TickProcess());
     }
 }
